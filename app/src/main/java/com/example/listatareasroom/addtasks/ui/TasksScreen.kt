@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
@@ -57,11 +58,9 @@ fun TasksScreen(tasksViewModel: TasksViewModel) {
 
 @Composable
 fun TaskList(tasksViewModel: TasksViewModel) {
-    val myTask: List<TaskModel> = tasksViewModel.tasks
+    val myTasks: List<TaskModel> = tasksViewModel.tasks
 
     LazyColumn {
-        //El parámetro opcional key ayuda a optimizar el LazyColumn
-        //Al indicarle que la clave es el id va a ser capaz de identificar cada tarea sin problemas
         items(myTasks, key = { it.id }) { task ->
             ItemTask(
                 task,

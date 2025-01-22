@@ -38,6 +38,11 @@ class TasksViewModel @Inject constructor() : ViewModel() {
         _tasks.remove(task)
     }
 
+    fun onCheckBoxSelected(taskModel: TaskModel) {
+        val index = _tasks.indexOf(taskModel)
+        _tasks[index] = _tasks[index].let { it.copy(selected = !it.selected) }
+    }
+
     fun onShowDialogClick() {
         _showDialog.value = true
     }
